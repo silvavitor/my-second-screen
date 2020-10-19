@@ -11,6 +11,7 @@ async function displayPictureInPicture() {
             await videoElement.requestPictureInPicture();
         }
     } catch (error) {
+        stopButton.click();
         console.log("error: ", error);
     }
 }
@@ -28,4 +29,8 @@ stopButton.addEventListener("click", async () => {
     stopButton.hidden = true;
     startButton.hidden = false;
 });
+
+videoElement.addEventListener("leavepictureinpicture", () => {
+    stopButton.click();
+})
 
